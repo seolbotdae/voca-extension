@@ -1,0 +1,23 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+@mixin flexContainer($direction: row, $justCont: start, $alignItem: start) {
+  display: flex;
+  flex-direction: $direction;
+
+  justify-content: $justCont;
+  align-items: $alignItem;
+}
+
+@mixin whSet($width, $height) {
+  width: $width;
+  height: $height;
+}

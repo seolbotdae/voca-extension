@@ -1,0 +1,81 @@
+@import '../common.scss';
+
+$borderColor: #dae1e8;
+
+.container {
+  @include whSet(400px, 300px);
+  @include flexContainer(column, start, center);
+  background-color: #ffffff;
+
+  nav {
+    @include whSet(400px, 50px);
+    @include flexContainer(row, center, center);
+
+    border: {
+      bottom: 1px solid $borderColor;
+    }
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  .current-status {
+    @include flexContainer(column, start, center);
+
+    p {
+      width: 200px;
+      padding: 5px 20px;
+      margin: 10px 0;
+
+      border-radius: 20px;
+      text-align: center;
+
+      color: rgb(48, 47, 47);
+
+      font: {
+        size: 1.2rem;
+      }
+    }
+
+    .total-saved-voca {
+      background-color: #809bce;
+    }
+
+    .today-saved-voca {
+      background-color: #eac4d5;
+    }
+
+    .unchecked-voca {
+      background-color: #d6eadf;
+      color: rgb(151, 151, 151);
+    }
+
+    :first-child {
+      margin-top: 20px;
+    }
+
+    :last-child {
+      margin-bottom: 20px;
+    }
+  }
+
+  button {
+    padding: 10px 30px;
+    color: #ffffff;
+    cursor: pointer;
+
+    border: {
+      radius: 4px;
+      style: none;
+    }
+
+    font: {
+      size: 1.2rem;
+    }
+
+    background: {
+      color: #0f2b46;
+    }
+  }
+}

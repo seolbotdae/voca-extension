@@ -1,18 +1,24 @@
-import './index.css'
+// 전처리 기능을 지원하는데, js에 돌려 써야하는 것 같다.
+import './index.scss'
+import { createSavedStatus } from './factory.js'
 
-const crx = 'create-chrome-ext'
+document.querySelector('.link-option').addEventListener('click', function () {
+  if (chrome.runtime.openOptionsPage) {
+    chrome.runtime.openOptionsPage()
+  } else {
+    window.open(chrome.runtime.getURL('options.html'))
+  }
+})
 
-document.querySelector('#app').innerHTML = `
-<main>
-<h3>Popup Page!</h3>
+chrome.storage.local
+  .get(['voca'])
+  .then((result) => {
+    const currentStatus = document.querySelector('.current-status')
 
-<h6>v 0.0.0</h6>
+    const saveStatus = createSavedStatus(result)
 
-<a
-  href="https://www.npmjs.com/package/create-chrome-ext"
-  target="_blank"
->
-  Power by ${crx}
-</a>
-</main>
-`
+    currentStatus.innerHTML = saveStatus.statusHTML
+  })
+  .catch((reject) => {
+    console.error(new Error(reject))
+  })
